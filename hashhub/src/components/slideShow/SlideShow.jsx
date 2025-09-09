@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+// 'https://i.pinimg.com/736x/d2/d2/5e/d2d25ea37905a3bb3d04e00a5bcff3f8.jpg'
 const slides = [
   {
-    src: 'https://i.pinimg.com/736x/d2/d2/5e/d2d25ea37905a3bb3d04e00a5bcff3f8.jpg',
+    src: 'https://i.pinimg.com/736x/29/f2/e8/29f2e8b5e59c5c235e4a12d24ca265ff.jpg',
     caption: 'Caption Text',
   },
   {
@@ -11,7 +11,7 @@ const slides = [
     caption: 'Caption Two',
   },
   {
-    src: 'https://i.pinimg.com/736x/d2/d2/5e/d2d25ea37905a3bb3d04e00a5bcff3f8.jpg',
+    src: 'https://i.pinimg.com/736x/29/f2/e8/29f2e8b5e59c5c235e4a12d24ca265ff.jpg',
     caption: 'Caption Three',
   },
 ];
@@ -28,8 +28,8 @@ function SlideShow() {
 
   return (
     <div className="w-full max-w-md md:max-w-lg lg:max-w-xl mx-auto p-0">
-      <h2 className="text-2xl font-bold mb-4 text-center">Automatic Slideshow</h2>
-      <p className="mb-4 text-center">Change image every 2 seconds:</p>
+      <h2 className="text-2xl font-bold mb-4 text-center">Featured</h2>
+      <p className="mb-4 text-center">Images to be updated soon:</p>
       <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden h-96">
         <AnimatePresence initial={false}>
           <motion.div

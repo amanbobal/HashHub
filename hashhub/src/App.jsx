@@ -1,15 +1,21 @@
 import './App.css'
 import { Navbar, Footer } from './components'
-import { Landing } from './pages'
+import { Home, Landing, Login, Signup } from './pages'
 
 function App() {
   return (
     <>
+    <div className='bg-black min-h-screen'>
+
       {/* <Navbar /> */}
       {/* <div className='min-h-screen relative'> */}
-        <Landing />
+        {/* <Landing /> */}
+        {/* <Login /> */}
+        {/* <Signup /> */}
+        <Home />
       {/* </div> */}
       {/* <Footer /> */}
+    </div>
     </>
   )
 }

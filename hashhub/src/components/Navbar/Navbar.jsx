@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 function Navbar() {
-  // Variants for optimized animations: logo pulse and button fade-in
   const logoVariants = {
     initial: { scale: 1 },
     animate: {
@@ -26,18 +25,23 @@ function Navbar() {
   };
 
   return (
-    <nav className="h-20 bg-black/10 text-white">
+    <nav className="h-20 bg-black text-white shadow-md">
       <div className="flex justify-between px-8 items-center h-full">
+        {/* Logo */}
         <motion.div
           variants={logoVariants}
           initial="initial"
           animate="animate"
         >
-          <p className="font-extrabold" id="navName">HashHub</p>
+          <p className="font-extrabold text-xl tracking-wide" id="navName">
+            HashHub
+          </p>
         </motion.div>
+
+        {/* Buttons */}
         <div className="flex space-x-4">
           <motion.button
-            className="px-4 py-2 bg-white/10 rounded hover:bg-white/15"
+            className="px-4 py-2 bg-white text-black rounded hover:bg-gray-200 transition max-sm:text-[14px]"
             variants={buttonVariants}
             initial="initial"
             animate="animate"
@@ -46,7 +50,7 @@ function Navbar() {
             Login
           </motion.button>
           <motion.button
-            className="px-4 py-2 bg-white/10 rounded hover:bg-white/15"
+            className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition  max-sm:text-[14px]"
             variants={buttonVariants}
             initial="initial"
             animate="animate"
