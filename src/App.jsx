@@ -7,15 +7,15 @@ function App() {
     <>
     <div className='bg-black min-h-screen'>
 
-      {/* <Navbar /> */}
-      {/* <div className='min-h-screen relative'> */}
-        {/* <Landing /> */}
-        {/* <Login /> */}
-        {/* <Signup /> */}
+      <Navbar />
+      <div className='min-h-screen relative'>
+        <Landing />
+        <Login />
+        <Signup />
         <Home />
-      {/* </div> */}
-      {/* <Footer /> */}
-    </div>
+       </div>
+       <Footer />
+      </div>
     </>
   )
 }
