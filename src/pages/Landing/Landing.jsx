@@ -1,15 +1,13 @@
 import React from 'react'
-import { DarkVeil, Footer, Navbar, SlideShow } from '../../components/index'
+import { Footer, Navbar, SlideShow } from '../../components/index'
 
 function Landing() {
   return (
     <div className="flex flex-col min-h-screen w-full relative bg-black text-white overflow-y-auto">
-      <DarkVeil />
-
       {/* Navbar */}
-      <div className="w-full z-10">
+      {/* <div className="w-full z-10">
         <Navbar />
-      </div>
+      </div> */}
 
       {/* Main Content */}
       <div className="flex flex-1 flex-col md:flex-row items-center justify-center w-full">
@@ -37,7 +35,7 @@ function Landing() {
       </div>
 
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

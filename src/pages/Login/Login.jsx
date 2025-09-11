@@ -4,7 +4,7 @@ import { Navbar } from "../../components/index"
 function Signup() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex items-center justify-center flex-col bg-black text-white min-h-screen">
         <div className="bg-black border border-gray-700 rounded-2xl shadow-lg w-[90%] lg:w-[35%]">
           <div className="px-3 sm:px-6 py-8">

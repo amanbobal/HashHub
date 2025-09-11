@@ -1,6 +1,6 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
 import { Navbar, Footer } from './components'
-import { Home, Landing, Login, Signup } from './pages'
 
 function App() {
   return (
@@ -8,12 +8,8 @@ function App() {
     <div className='bg-black min-h-screen'>
 
       <Navbar />
-      <div className='min-h-screen relative'>
-        <Landing />
-        <Login />
-        <Signup />
-        <Home />
-       </div>
+      {/* <div className='min-h-screen relative'> */}
+        <Outlet />
        <Footer />
       </div>
     </>
