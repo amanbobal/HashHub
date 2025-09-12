@@ -1,14 +1,11 @@
 import React from 'react'
-import { Footer, Navbar, SlideShow } from '../../components/index'
+import { Footer, Navbar, SlideShow, FeaturesSection, CTASection, TestimonialsSection } from '../../components/index'
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 function Landing() {
   return (
     <div className="flex flex-col min-h-screen w-full relative bg-black text-white overflow-y-auto">
-      {/* Navbar */}
-      {/* <div className="w-full z-10">
-        <Navbar />
-      </div> */}
 
       {/* Main Content */}
       <div className="flex flex-1 flex-col md:flex-row items-center justify-center w-full">
@@ -36,43 +33,67 @@ function Landing() {
       </div>
 
       {/* security */}
-      <div className='bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 w-full mt-8'>
-        <div className='w-full flex flex-col items-center justify-center md:max-w-4xl  mx-auto  py-12 px-4'>
+      <div className="bg-[linear-gradient(to_right_top,#000000,#08080c,#0a1214)] w-full mt-8 relative overflow-hidden">
 
-          {/* Heading */}
-          <div className='w-full md:w-[80%] text-center max-w-2xl px-4'>
-            <h1 className="text-4xl md:text-5xl font-extrabold pb-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500 font-asimovian">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none" />
+
+        <div className="w-full flex flex-col items-center justify-center max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            className="w-full md:w-4/5 text-center max-w-3xl px-4"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.2 }}
+            viewport={{ amount: 0.3 }}
+          >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold pb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 font-[Inter,sans-serif] tracking-tight">
               Your Privacy, Our Priority
             </h1>
-          </div>
+          </motion.div>
 
           {/* Content */}
-          <div>
-            <p className="text-lg md:text-xl mb-10 text-gray-300 w-full md:w-3/4 text-center mx-auto leading-relaxed">
-              We prioritize your privacy with end-to-end encryption and secure sharing features. Your data is never compromised, and you’re in control of what you share.
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.4 }}
+            viewport={{ amount: 0.3 }}
+          >
+            <p className="text-base sm:text-lg md:text-xl mb-12 text-gray-200 w-full md:w-3/4 text-center mx-auto leading-relaxed tracking-wide">
+              We prioritize your privacy with cutting-edge end-to-end encryption and secure sharing features. Your data remains yours—always protected, always in your control.
             </p>
-          </div>
+          </motion.div>
 
-          <div className=''>
-            <h2 className="text-2xl font-semibold text-white mb-4 font-asimovian">End-to-End Encryption</h2>
-            <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              HashHub employs state-of-the-art end-to-end encryption to ensure that only you and your intended recipients have access to your shared content. Whether it’s images, posts, or personal messages, your data is encrypted from the moment you upload it until it’s viewed by the recipient.
+
+          <motion.div
+            className="bg-white/5 backdrop-blur-lg p-6 sm:p-8 rounded-xl shadow-2xl shadow-gray-900/50 border border-white/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.6 }}
+            viewport={{ amount: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-5 font-[Inter,sans-serif] tracking-tight">
+              End-to-End Encryption
+            </h2>
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-8">
+              HashHub leverages advanced end-to-end encryption to ensure your shared content—be it images, posts, or messages—remains accessible only to you and your intended recipients. Your data is secured from upload to delivery.
             </p>
 
-            <h2 className="text-2xl font-semibold text-white mb-4 font-asimovian">Your Data, Your Control</h2>
-            <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              We believe that privacy is a fundamental right. With HashHub, you are in complete control of your data. You decide what to share, when to share it, and with whom. We never compromise on privacy, and we never sell your data.
+            <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-5 font-[Inter,sans-serif] tracking-tight">
+              Your Data, Your Control
+            </h2>
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+              Privacy is your right. With HashHub, you have full control over your data—decide what to share, when, and with whom. We never compromise on your privacy or sell your data.
             </p>
-          </div>
-
+          </motion.div>
         </div>
-
       </div>
 
+      <FeaturesSection />
 
+      <CTASection />
 
-      {/* Footer */}
-      {/* <Footer /> */}
+      <TestimonialsSection />
     </div>
   );
 }
