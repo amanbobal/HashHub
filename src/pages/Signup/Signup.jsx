@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar } from "../../components/index"
+import { Link } from 'react-router-dom'
 
 function Signup() {
   return (
@@ -112,9 +112,9 @@ function Signup() {
 
             <div className="w-full mx-auto text-center text-sm">
               Already signed up?{" "}
-              <a href="#" className="hover:underline text-gray-300">
-                Login now
-              </a>
+              <Link to={"/login"}>
+                <button className="hover:underline text-gray-300 cursor-pointer"> Login now </button>
+              </Link>
             </div>
           </div>
         </div>

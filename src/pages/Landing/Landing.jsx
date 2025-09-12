@@ -1,5 +1,6 @@
 import React from 'react'
 import { Footer, Navbar, SlideShow } from '../../components/index'
+import { Link } from 'react-router-dom';
 
 function Landing() {
   return (
@@ -20,9 +21,9 @@ function Landing() {
             Your ultimate social media platform to explore trending topics, connect with like-minded people, and express yourself through powerful hashtags and communities.
           </p>
           <div className="flex justify-center space-x-4">
-            <button className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition">
+            <Link to={"/login"}><button className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition">
               Get Started
-            </button>
+            </button></Link>
             <button className="px-6 py-3 border border-white text-white rounded-lg hover:bg-white hover:text-black transition">
               Learn More
             </button>

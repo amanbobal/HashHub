@@ -52,7 +52,7 @@ function SlideShow() {
 
   return (
     <div className="w-full max-w-md md:max-w-lg lg:max-w-xl mx-auto p-0">
-      <h2 className="text-2xl font-bold mb-4 text-center">Featured</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center font-asimovian">HIGHLIGHTS</h2>
 
 
       <div className="relative w-full max-w-md mx-auto rounded-lg overflow-hidden aspect-square bg-black">
