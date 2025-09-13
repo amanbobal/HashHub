@@ -1,5 +1,5 @@
 import React from 'react'
-import { Footer, Navbar, SlideShow, FeaturesSection, CTASection, TestimonialsSection } from '../../components/index'
+import { Footer, Navbar, SlideShow, FeaturesSection, CTASection, TestimonialsSection, FAQSection } from '../../components/index'
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
@@ -94,6 +94,8 @@ function Landing() {
       <CTASection />
 
       <TestimonialsSection />
+
+      <FAQSection />
     </div>
   );
 }

@@ -4,6 +4,9 @@ const testimonials = [
   { name: 'Alex M.', quote: 'HashHub’s privacy features let me share confidently without worrying about my data.' },
   { name: 'Sarah K.', quote: 'I love how easy it is to connect with communities around my interests!' },
   { name: 'James T.', quote: 'The best platform for secure, hashtag-driven social networking.' },
+  { name: 'Alex M.', quote: 'HashHub’s privacy features let me share confidently without worrying about my data.' },
+  { name: 'Sarah K.', quote: 'I love how easy it is to connect with communities around my interests!' },
+  { name: 'James T.', quote: 'The best platform for secure, hashtag-driven social networking.' },
 ];
 
 const TestimonialsSection = () => {
