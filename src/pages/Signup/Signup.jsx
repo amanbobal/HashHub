@@ -9,19 +9,25 @@ function Signup() {
     password: '',
     image: null,
   })
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setFormData({...formData, [name] : value});
-    setErrors({...errors, [name] : ''});
-  }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (errors[name]) {
+      const newErrors = { ...errors };
+      delete newErrors[name];
+      setErrors(newErrors);
+    }
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = validateForm();
-    if(Object.keys(newErrors).length > 0){
+    if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
@@ -48,15 +54,15 @@ function Signup() {
             <form className="mx-5" onSubmit={handleSubmit}>
               {/* Error Message */}
               {Object.keys(errors).length > 0 && (
-
                 <div className="text-center text-red-500 font-medium mb-4 rounded-md bg-red-100/10 px-3 py-3 border border-red-500/30">
-                  {errors.email || errors.password || 'Please check your input'}
+                  <ul className="list-disc list-inside">
+                    {Object.values(errors).map((err, idx) => (
+                      <li key={idx}>{err}</li>
+                    ))}
+                  </ul>
                 </div>
-              )
+              )}
 
-
-
-              }
 
               {/* Name details */}
               <div className="flex w-full flex-col sm:flex-row">
@@ -66,7 +72,7 @@ function Signup() {
                   </label>
                   <input
                     type="text"
-                    name="firstname"
+                    name="firstName"
                     id="firstName"
                     placeholder="First Name"
                     onChange={handleChange}
@@ -79,9 +85,10 @@ function Signup() {
                   </label>
                   <input
                     type="text"
-                    name="lastname"
+                    name="lastName"
                     id="lastName"
                     placeholder="Last Name"
+                    onChange={handleChange}
                     className="p-2 bg-transparent text-white border border-gray-600 rounded-md focus:border-white outline-none"
                   />
                 </div>
@@ -97,6 +104,7 @@ function Signup() {
                   name="email"
                   id="email"
                   placeholder="Enter your email"
+                  onChange={handleChange}
                   className="p-2 bg-transparent text-white border border-gray-600 rounded-md focus:border-white outline-none"
                 />
               </div>
@@ -111,6 +119,7 @@ function Signup() {
                   name="password"
                   id="password"
                   placeholder="Enter new password"
+                  onChange={handleChange}
                   className="p-2 bg-transparent text-white border border-gray-600 rounded-md focus:border-white outline-none"
                 />
                 <button
@@ -143,6 +152,7 @@ function Signup() {
                   type="file"
                   name="image"
                   id="image"
+                  onChange={handleChange}
                   className="p-2 bg-transparent text-white border border-gray-600 rounded-md focus:border-white outline-none file:bg-gray-800 file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:mr-2 hover:file:bg-gray-700"
                 />
               </div>
