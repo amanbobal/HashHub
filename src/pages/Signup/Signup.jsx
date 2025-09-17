@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Signup() {
   const [formData, setFormData] = useState({
     firstName: '',
-    lastname: '',
+    lastName: '',
     email: '',
     password: '',
     image: null,
@@ -24,12 +24,29 @@ function Signup() {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
+    }
+    
+
+    try{
+      const response = await fetch("http://localhost/hashhub/signup.php",{
+        method:"POST",
+        headers: {
+          "Content-Type" : "application/json",
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+      console.log("Response from php", data);
+      
+    }catch (error){
+      console.error("Error : ",error)
     }
   }
 
