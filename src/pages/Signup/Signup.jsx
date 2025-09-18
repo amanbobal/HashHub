@@ -13,8 +13,12 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, files } = e.target;
+    if(name === 'image'){
+      setFormData({...formData, image: files[0]})
+    }else{
+      setFormData({ ...formData, [name]: value });
+    }
 
     if (errors[name]) {
       const newErrors = { ...errors };
@@ -31,24 +35,33 @@ function Signup() {
       setErrors(newErrors);
       return;
     }
-    
 
-    try{
-      const response = await fetch("http://localhost/hashhub/signup.php",{
-        method:"POST",
-        headers: {
-          "Content-Type" : "application/json",
-        },
-        body: JSON.stringify(formData)
-      })
+    try {
+      const formDataObj = new FormData(); // create FormData taaki image bhi ja ske
 
-      const data = await response.json()
-      console.log("Response from php", data);
-      
-    }catch (error){
-      console.error("Error : ",error)
+      // append text fields
+      formDataObj.append("firstName", formData.firstName);
+      formDataObj.append("lastName", formData.lastName);
+      formDataObj.append("email", formData.email);
+      formDataObj.append("password", formData.password);
+
+      // append file input 
+      if (formData.image) {
+        formDataObj.append("image", formData.image);
+      }
+
+      const response = await fetch("http://localhost/hashhub/signup.php", {
+        method: "POST",
+        body: formDataObj, 
+      });
+
+      const data = await response.json();
+      console.log("Response from PHP:", data);
+    } catch (error) {
+      console.error("Error:", error);
     }
-  }
+  };
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -68,7 +81,7 @@ function Signup() {
               Sign Up
             </h1>
 
-            <form className="mx-5" onSubmit={handleSubmit}>
+            <form className="mx-5" onSubmit={handleSubmit} encType='multipart/form-data'>
               {/* Error Message */}
               {Object.keys(errors).length > 0 && (
                 <div className="text-center text-red-500 font-medium mb-4 rounded-md bg-red-100/10 px-3 py-3 border border-red-500/30">
@@ -170,6 +183,7 @@ function Signup() {
                   name="image"
                   id="image"
                   onChange={handleChange}
+                  accept='image/*'
                   className="p-2 bg-transparent text-white border border-gray-600 rounded-md focus:border-white outline-none file:bg-gray-800 file:text-white file:border-0 file:rounded file:px-3 file:py-1 file:mr-2 hover:file:bg-gray-700"
                 />
               </div>
