@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../services/AuthContext';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -11,12 +12,14 @@ function Signup() {
   })
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-
+  const {user, setUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if(name === 'image'){
-      setFormData({...formData, image: files[0]})
-    }else{
+    if (name === 'image') {
+      setFormData({ ...formData, image: files[0] })
+    } else {
       setFormData({ ...formData, [name]: value });
     }
 
@@ -52,13 +55,29 @@ function Signup() {
 
       const response = await fetch("http://localhost/hashhub/signup.php", {
         method: "POST",
-        body: formDataObj, 
+        body: formDataObj,
+        credentials: "include",
       });
 
       const data = await response.json();
       console.log("Response from PHP:", data);
+
+      if (data.status === "success") {
+        setUser(data.user)
+        localStorage.setItem("user", JSON.stringify(data.user)); // optional for persistence
+        navigate("/home")
+      } else {
+        const backendErrors = []
+        if (data.emailError) backendErrors.email = data.emailError;
+        if (data.message) backendErrors.general = data.message;
+        if (data.imageStatus && data.status === "error")
+          backendErrors.image = data.imageStatus;
+
+        setErrors(backendErrors);
+      }
     } catch (error) {
       console.error("Error:", error);
+      setErrors({ general: "Something went wrong. Please try again." });
     }
   };
 
