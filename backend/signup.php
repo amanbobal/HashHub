@@ -1,4 +1,15 @@
 <?php
+
+$session_lifetime = 7 * 24 * 60 * 60; // 7 days
+session_set_cookie_params([
+    'lifetime' => time() + $session_lifetime,
+    'path' => '/',
+    'domain' => 'localhost', 
+    'secure' => false,       
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+
 session_start();
 include_once "config.php";
 
@@ -83,13 +94,12 @@ if ($insert_sql) {
     $_SESSION['unique_id'] = $random_id;
     $responseArray["session"] = $_SESSION['unique_id'];
     $responseArray["user"] = [
-    "id" => $random_id,
-    "firstName" => $firstName,
-    "lastName" => $lastName,
-    "email" => $email,
-    "img" => $newImgName
-];
-
+        "id" => $random_id,
+        "firstName" => $firstName,
+        "lastName" => $lastName,
+        "email" => $email,
+        "img" => $newImgName
+    ];
 } else {
     $responseArray["status"] = "error";
     $responseArray["message"] = "Database insert failed!";

@@ -8,7 +8,12 @@ function Landing() {
     <div className="flex flex-col min-h-screen w-full relative bg-black text-white overflow-y-auto">
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col md:flex-row items-center justify-center w-full">
+      <motion.div
+        className="flex flex-1 flex-col md:flex-row items-center justify-center w-full"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
+      >
         {/* Text Section */}
         <div className="w-full md:w-1/2 text-center max-w-2xl px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
@@ -18,19 +23,22 @@ function Landing() {
             Your ultimate social media platform to explore trending topics, connect with like-minded people, and express yourself through powerful hashtags and communities.
           </p>
           <div className="flex justify-center space-x-4">
-            <Link to={"/login"}><button className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition">
-              Get Started
-            </button></Link>
+            <Link to={"/login"}>
+              <button className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition">
+                Get Started
+              </button>
+            </Link>
             <button className="px-6 py-3 border border-white text-white rounded-lg hover:bg-white hover:text-black transition">
               Learn More
             </button>
           </div>
         </div>
+
         {/* SlideShow Section */}
         <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0 px-2">
           <SlideShow />
         </div>
-      </div>
+      </motion.div>
 
       {/* security */}
       <div className="bg-[linear-gradient(to_right_top,#000000,#08080c,#0a1214)] w-full mt-8 relative overflow-hidden">

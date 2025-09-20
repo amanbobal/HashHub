@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home, Landing, Login, Signup } from './pages/index.js'
 import { AuthProvider } from './services/AuthContext.jsx'
+import ProtectedRoute from './services/ProtectedRoute.jsx'
+import PublicRoute from './services/PublicRoute.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,11 +14,34 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <Routes>
           <Route path='/' element={<App />}>
-            <Route index element={<Landing />} />
-            <Route path='login' element={<Login />} />
-            <Route path='signup' element={<Signup />} />
-            <Route path='home' element={<Home />} />
-          </Route>
+            <Route index 
+            element=
+            {
+              <PublicRoute>
+                <Landing />
+              </PublicRoute>
+            } />
+            <Route path='login'
+              element=
+              {
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              } />
+            <Route path='signup'
+              element=
+              {<PublicRoute>
+                <Signup />
+                </PublicRoute>
+            } />
+
+                <Route path='home'
+                  element={
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                  } />
+              </Route>
         </Routes>
       </AuthProvider>
     </BrowserRouter>
