@@ -1,43 +1,55 @@
-import { div } from 'framer-motion/client';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
+import Users from "../Users/Users";
 
 function Home() {
-  const [clicked, setClicked] = useState(null);
+  const [loader, setLoader] = useState(true);
 
-  return (
-    // testing out click things for chat 
-    <div className='text-white bg-black min-h-screen w-full'>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoader(false);
+    }, 1000);
 
-      <div className='w-full h-screen grid '>
-        <div className='w-full md:w-[50%] mx-auto rounded-2xl p-2'>
-          {
-            clicked ?
-              <div className='text-4xl font-bold flex justify-center items-center relative flex-col gap-8 bg-red-800 min-h-full rounded-2xl'>
-                <button onClick={(prev) => { setClicked(!prev) }} className=' text-white bg-transparent absolute top-2 right-2 '>
-                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 72 72">
-                    <path fill='#FFFFFF' d="M 19 15 C 17.977 15 16.951875 15.390875 16.171875 16.171875 C 14.609875 17.733875 14.609875 20.266125 16.171875 21.828125 L 30.34375 36 L 16.171875 50.171875 C 14.609875 51.733875 14.609875 54.266125 16.171875 55.828125 C 16.951875 56.608125 17.977 57 19 57 C 20.023 57 21.048125 56.609125 21.828125 55.828125 L 36 41.65625 L 50.171875 55.828125 C 51.731875 57.390125 54.267125 57.390125 55.828125 55.828125 C 57.391125 54.265125 57.391125 51.734875 55.828125 50.171875 L 41.65625 36 L 55.828125 21.828125 C 57.390125 20.266125 57.390125 17.733875 55.828125 16.171875 C 54.268125 14.610875 51.731875 14.609875 50.171875 16.171875 L 36 30.34375 L 21.828125 16.171875 C 21.048125 15.391875 20.023 15 19 15 z"></path>
-                  </svg>
-                </button>
-              </div>
-              :
-              <div className='w-full h-full rounded-2xl p-2'>
-                <div className='h-[20%] bg-white/30 flex justify-center items-center'>
-                  Ji
-                </div>
+    // Cleanup timer
+    return () => clearTimeout(timer);
+  }, []);
 
-                <div className='h-[80%] bg-gray-600 p-4 text-center '>
-                  <p>the click button is to click and go to chat space of the user   </p>
-                  <button onClick={() => { setClicked(true) }} className='px-4 py-2 text-black bg-white '>click me </button>
-                </div>
-              </div>
-          }
+  return loader ? (
+    <div className="w-full grid md:grid-cols-[30%_70%] h-screen overflow-auto animate-pulse">
+      {/* Sidebar */}
+      <div className="bg-gradient-to-br from-zinc-900 via-black to-zinc-800 p-4">
+        <div className="w-full h-full bg-gradient-to-br from-black to-gray-700 flex-col flex">
+          {/* User header skeleton */}
+          <div className="flex-1/10 p-2 flex bg-black/30 items-center gap-5 px-4">
+            <div className="p-2 bg-gray-700 rounded-full">
+              <div className="w-[24px] h-[24px] rounded-full bg-gray-600"></div>
+            </div>
+            <div className="bg-black/25 flex flex-col justify-center gap-2 p-2 rounded">
+              <div className="w-32 h-4 bg-gray-600 rounded"></div>
+              <div className="w-20 h-3 bg-gray-700 rounded"></div>
+            </div>
+          </div>
 
+          {/* Sidebar body skeleton */}
+          <div className="flex-9/10 p-4 space-y-4">
+            <div className="w-full h-6 bg-gray-700 rounded"></div>
+            <div className="w-3/4 h-6 bg-gray-700 rounded"></div>
+            <div className="w-2/3 h-6 bg-gray-700 rounded"></div>
+          </div>
         </div>
+      </div>
 
-        {/* right side 75% */}
+      {/* Right side skeleton */}
+      <div className="hidden md:block p-6 space-y-4">
+        <div className="w-full h-6 bg-gray-700 rounded"></div>
+        <div className="w-4/5 h-6 bg-gray-700 rounded"></div>
+        <div className="w-3/5 h-6 bg-gray-700 rounded"></div>
       </div>
     </div>
-  )
+  ) : (
+    <div className="text-white bg-black w-full min-h-screen">
+      <Users />
+    </div>
+  );
 }
 
-export default Home
+export default Home;

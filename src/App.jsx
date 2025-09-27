@@ -8,8 +8,9 @@ function App() {
     <div className='bg-black min-h-screen'>
 
       <Navbar />
-      {/* <div className='min-h-screen relative'> */}
+      <div className='min-h-screen relative'>
         <Outlet />
+        </div>
        <Footer />
       </div>
     </>
