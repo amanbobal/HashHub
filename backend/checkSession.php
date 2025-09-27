@@ -46,7 +46,8 @@ if (isset($_SESSION['unique_id'])) {
                 "firstName" => $user['firstName'],
                 "lastName" => $user['lastName'],
                 "email" => $user['email'],
-                "img" => $user['img']
+                "img" => $user['img'],
+                "status" => $user['status'],
             ]
         ];
     } else {

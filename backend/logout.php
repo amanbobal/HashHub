@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once "config.php";
 //cors headers
 header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -13,6 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
+$uid = $_SESSION['unique_id'];
+mysqli_query($conn, "UPDATE users SET status='offline' WHERE unique_id='{$uid}'");
 // Destroy 
 session_unset();   
 session_destroy(); 

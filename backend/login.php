@@ -52,9 +52,10 @@ if ($result->num_rows === 1) {
 
     // 7Verify password
     if (password_verify($password, $user['password'])) {
-        // ✅ Set session
+        // Set session
         $_SESSION['unique_id'] = $user['unique_id'];
-
+        
+        mysqli_query($conn, "UPDATE users SET status = 'Active now' WHERE unique_id = '{$user['unique_id']}'");
         $responseArray = [
             "status" => "success",
             "message" => "Login successful!",
@@ -64,7 +65,8 @@ if ($result->num_rows === 1) {
                 "firstName" => $user['firstName'],
                 "lastName" => $user['lastName'],
                 "email" => $user['email'],
-                "img" => $user['img']
+                "img" => $user['img'],
+                "status" => $user['status'],
             ]
         ];
     } else {

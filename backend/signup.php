@@ -98,7 +98,8 @@ if ($insert_sql) {
         "firstName" => $firstName,
         "lastName" => $lastName,
         "email" => $email,
-        "img" => $newImgName
+        "img" => $newImgName,
+        "status" => "Active now",
     ];
 } else {
     $responseArray["status"] = "error";
