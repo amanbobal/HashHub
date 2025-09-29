@@ -115,11 +115,11 @@ function Users() {
                         key={idx}
                         className="flex items-center gap-5 px-4 w-full"
                       >
-                        <div className="w-12 h-12 rounded-full overflow-hidden">
+                        <div className="w-12 h-11 rounded-full overflow-hidden">
                           <img
                             src={`http://localhost/hashhub/uploads/${u.img}`}
                             alt={`${u.firstName} ${u.lastName}`}
-                            className="w-full h-full object-cover"
+                            className="w-12 h-12 object-cover"
                           />
                         </div>
                         <div className="bg-black/25 flex flex-col justify-center w-full p-2 rounded-xl">
