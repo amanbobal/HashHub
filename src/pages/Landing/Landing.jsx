@@ -9,13 +9,13 @@ function Landing() {
 
       {/* Main Content */}
       <motion.div
-        className="flex flex-1 flex-col md:flex-row items-center justify-center w-full"
+        className="flex flex-1 flex-col md:flex-row items-center justify-center md:justify-between w-full"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
       >
         {/* Text Section */}
-        <div className="w-full md:w-1/2 text-center max-w-2xl px-4">
+        <div className="w-full md:w-1/2 text-center max-w-2xl px-8 ">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Discover, Connect, and Share with HashHub
           </h1>

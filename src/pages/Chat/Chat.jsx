@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../services/AuthContext";
 
 function Chat() {
@@ -105,27 +105,50 @@ function Chat() {
           </div>
         </div>
       ) : (
-        <div className="flex items-center gap-3 p-4 bg-black/30 border-b border-gray-700">
-          <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-700 flex-shrink-0">
-            <img
-              src={
-                chatUser?.img
-                  ? `http://localhost/hashhub/uploads/${chatUser.img}`
-                  : "/vite.svg"
-              }
-              alt={
-                chatUser
-                  ? `${chatUser.firstName} ${chatUser.lastName}`
-                  : "User"
-              }
-              className="w-full h-full object-cover"
-            />
+        <div className="flex w-full items-center">
+          <div className="flex items-center gap-3 p-4 bg-black/30 border-b border-gray-700 w-full">
+            {/* image */}
+            <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-700 flex-shrink-0 ">
+              <img
+                src={
+                  chatUser?.img
+                    ? `http://localhost/hashhub/uploads/${chatUser.img}`
+                    : "/vite.svg"
+                }
+                alt={
+                  chatUser
+                    ? `${chatUser.firstName} ${chatUser.lastName}`
+                    : "User"
+                }
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* name and status */}
+            <div>
+              <h1 className="font-bold text-white">
+                {chatUser.firstName} {chatUser.lastName}
+              </h1>
+              <p className="text-sm text-green-400">
+                {chatUser.status || "Offline"}
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="font-bold text-white">
-              {chatUser.firstName} {chatUser.lastName}
-            </h1>
-            <p className="text-sm text-green-400">{chatUser.status || "Offline"}</p>
+
+          <div className=" bg-black/30 p-4 border-b border-gray-700 cursor-pointer">
+            <Link to={"/home"}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="45"
+              width={"45"}
+              viewBox="0 0 576 512"
+            >
+              <path
+                fill="#ffffff"
+                d="M204.3 43.1C215.9 32 233 28.9 247.7 35.2S272 56 272 72l0 136.3 172.3-165.1C455.9 32 473 28.9 487.7 35.2S512 56 512 72l0 368c0 16-9.6 30.5-24.3 36.8s-31.8 3.2-43.4-7.9L272 303.7 272 440c0 16-9.6 30.5-24.3 36.8s-31.8 3.2-43.4-7.9l-192-184C4.5 277.3 0 266.9 0 256s4.5-21.3 12.3-28.9l192-184z"
+              />
+            </svg>
+            </Link>
           </div>
         </div>
       )}
@@ -150,7 +173,9 @@ function Chat() {
             <div
               key={msg.msg_id}
               className={`flex items-end gap-2 ${
-                msg.outgoing_msg_id === user.id ? "justify-end" : "justify-start"
+                msg.outgoing_msg_id === user.id
+                  ? "justify-end"
+                  : "justify-start"
               }`}
             >
               {msg.outgoing_msg_id !== user.id && (

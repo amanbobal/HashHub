@@ -200,7 +200,7 @@ function Users() {
                             />
                           </div>
 
-                          <div className="w-full">
+                          <div className="w-full flex flex-col items-center justify-center">
                             <div className="bg-black/25 flex  justify-between w-full p-2 px-4 rounded-tr-xl">
                               <h1 className="font-bold">
                                 {u.firstName} {u.lastName}
