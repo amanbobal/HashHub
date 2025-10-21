@@ -25,6 +25,7 @@ function Chat() {
         });
         const data = await response.json();
         if (data.status === "success") {
+          // console.log(data.chats)
           setChats(data.chats);
         } else {
           setChats([]);
@@ -190,6 +191,7 @@ function Chat() {
             value={newMsg}
             onChange={(e) => setNewMsg(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            autoComplete="off"
           />
           <button
             onClick={handleSend}
