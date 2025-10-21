@@ -15,7 +15,7 @@ function Landing() {
         transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
       >
         {/* Text Section */}
-        <div className="w-full md:w-1/2 text-center max-w-2xl px-8 ">
+        <div className="w-full md:w-1/2 text-center max-w-2xl px-8 flex flex-col justify-center items-center ">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Discover, Connect, and Share with HashHub
           </h1>
